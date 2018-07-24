@@ -5,10 +5,12 @@ import java.util.List;
 
 /**
  *
- * @author EXG503
  */
+
 public interface RSSFeedsManagementService {
 
     public List<RSSFeed> getAllRSSFeeds();
+    
+    public void saveRSSFeed(RSSFeed rssFeed);
     
 }

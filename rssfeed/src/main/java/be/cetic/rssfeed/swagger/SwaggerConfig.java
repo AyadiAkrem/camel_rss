@@ -49,7 +49,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("be.cetic.rssfeed.controller"))
-                .paths(PathSelectors.ant("/rssfeeds/*"))
+                .paths(PathSelectors.ant("/*/*"))
                 .build().apiInfo(apiInfo())
                 .securitySchemes(Arrays.asList(securityScheme()))
                 .securityContexts(Arrays.asList(securityContext()));

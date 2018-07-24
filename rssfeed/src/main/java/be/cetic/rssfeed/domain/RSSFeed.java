@@ -1,20 +1,39 @@
 package be.cetic.rssfeed.domain;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.OneToMany;
+import org.springframework.data.annotation.Id;
 
 /**
  *
  * @author EXG503
  */
-public class RSSFeed {
-    private static AtomicInteger counter = new AtomicInteger(0);
-    private final String URI ;
-    private boolean active ; 
-    private final long id;
+@Entity
+public class RSSFeed  {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "rss_uri_id")
+    @javax.persistence.Id
+    private Long id;
+
+    private String URI;
+    private boolean active;
+    
+    @OneToMany()
+    private List<Parameter> parameters ;
+
+    public RSSFeed() {
+    }
+    
+    
 
     public RSSFeed(String URI) {
         this.URI = URI;
-        id = counter.incrementAndGet();
     }
 
     public boolean isActive() {
@@ -29,8 +48,26 @@ public class RSSFeed {
         return URI;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Parameter> getParameters() {
+        return parameters;
+    }
+
+    public void setParameters(List<Parameter> parameters) {
+        this.parameters = parameters;
+    }
+
+    public void setURI(String URI) {
+        this.URI = URI;
+    }
+    
+    
 
 }
